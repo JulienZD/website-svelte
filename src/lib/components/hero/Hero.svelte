@@ -18,7 +18,7 @@
 
 <style>
 	#hero {
-		background-image: url(images/hero.jpg);
+		background-image: url(/images/hero.jpg);
 		clip-path: polygon(calc(30% - 10vw) 0, 100% 0, 100% 100%, 45% 100%);
 	}
 </style>
