@@ -5,7 +5,7 @@ for (const path in imports) {
 	const story = imports[path];
 
 	// find the name of the file without the extension
-	const slug = path.match(/[\d\w-]*\.md*$/)[0].split('.md')[0];
+	const slug = path.split('/').pop().split('.md')[0];
 	if (story) {
 		const render = typeof story.default.render === 'function' && story.default.render();
 
