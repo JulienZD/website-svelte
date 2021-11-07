@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
 </script>
@@ -12,7 +14,7 @@
 
 <Header />
 
-<main>
+<main class:container={$page.path !== '/'}>
 	<slot />
 </main>
 
