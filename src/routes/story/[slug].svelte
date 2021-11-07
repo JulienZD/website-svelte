@@ -18,59 +18,57 @@
 
 <script lang="ts">
 	import Head from '$lib/head/Head.svelte';
+	import InfoBlock from '$lib/components/info-block/InfoBlock.svelte';
+	import { onMount } from 'svelte';
 
 	export let Story: any;
 	export let metadata: StoryMetadata;
 
-	$: ({ title, description, image, stack, repository } = metadata);
+	$: ({ title, description, image, stack, repository, summary } = metadata);
+
+	onMount(() => {
+		document.querySelectorAll('main a').forEach((anchor: HTMLAnchorElement) => {
+			anchor.className = 'link-animated-hover';
+			if (anchor.href.startsWith('http')) {
+				anchor.setAttribute('target', '_blank');
+				anchor.setAttribute('referrer', 'noopener');
+			}
+		});
+	});
 </script>
 
 <Head {title} {description} {image} />
 
-<h1>{metadata.title}</h1>
+<h1 class="animate-slideUp">{title}</h1>
 
-<section class="meta">
-	{#if stack?.length > 0}
-		<div class="meta-item">
-			<b>Stack</b>
-			{#each stack as tech}
-				<p>{tech}</p>
-			{/each}
-		</div>
+<p class="max-w-4xl my-8">
+	{#if summary}
+		{@html summary}
+	{:else}
+		{description}
 	{/if}
+</p>
 
-	{#if repository}
-		<div class="meta-item">
-			<b>Code</b>
+<div class="flex flex-row gap-x-24 my-8">
+	<InfoBlock title="Stack">
+		{#each stack as tech}
+			<p class="my-0.5 first:mt-0 last:mb-0">
+				{tech}
+			</p>
+		{/each}
+	</InfoBlock>
+	<InfoBlock title="Code">
+		{#if repository}
 			<a href={repository}>Repository</a>
-		</div>
-	{/if}
-</section>
-
+		{:else}
+			<p class="my-0">Not available</p>
+		{/if}
+	</InfoBlock>
+</div>
 {#if image}
-	<img src={image} alt="" loading="lazy" decoding="async" />
+	<img src={image} alt="" width={1024} height={576} class="rounded-t-xl" loading="lazy" decoding="async" />
 {/if}
 
-<svelte:component this={Story} />
-
-<style>
-	.meta {
-		display: flex;
-		column-gap: 6rem;
-	}
-
-	.meta-item {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.meta b {
-		margin-bottom: 0.5rem;
-	}
-
-	p {
-		margin: 0;
-		margin-bottom: 0.25rem;
-		color: gold;
-	}
-</style>
+<div class="mt-12">
+	<svelte:component this={Story} />
+</div>
