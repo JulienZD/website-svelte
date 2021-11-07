@@ -16,8 +16,11 @@
 	<slot />
 </main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+<footer class="mt-auto text-right py-3 pr-4">
+	<div class="flex justify-end">
+		<a href="https://colors.jzd.me/" class="link-animated-hover">Preview Color Combinations</a>
+		<a class="link-animated-hover" href="https://github.com/JulienZD/website">Source</a>
+	</div>
 </footer>
 
 <style>
@@ -30,23 +33,5 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

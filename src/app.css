@@ -6,36 +6,72 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply tracking-wide overflow-x-hidden;
-  }
+	body {
+		@apply tracking-wide overflow-x-hidden;
+	}
 
-  p {
-    @apply my-4;
-  }
+	p {
+		@apply my-4;
+	}
 
-  h1 {
-    @apply text-4xl text-secondary;
-  }
-  h2 {
-    @apply text-3xl text-secondary;
-  }
-  h3 {
-    @apply text-2xl;
-  }
+	h1 {
+		@apply text-4xl text-secondary;
+	}
+	h2 {
+		@apply text-3xl text-secondary;
+	}
+	h3 {
+		@apply text-2xl;
+	}
+
+	a,
+	a:hover {
+		@apply text-secondary;
+	}
 }
 
 :root {
-  --color-primary: #071625;
-  --color-secondary: #d49f1b;
-  --main-text: #acacac;
+	--color-primary: #071625;
+	--color-secondary: #d49f1b;
+	--main-text: #acacac;
 }
 
 body {
-  background: var(--color-primary);
-  color: var(--main-text);
-  font-family: 'Overpass', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
+	background: var(--color-primary);
+	color: var(--main-text);
+	font-family: 'Overpass', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+		Arial, sans-serif;
+}
+
+footer a,
+footer a.link-animated-hover {
+	@apply ml-4 first:ml-0;
+}
+
+.link-animated-hover {
+	@apply inline-block no-underline rounded transition-colors duration-75 ease-linear;
+}
+
+p a.link-animated-hover,
+a.link.link-animated-hover {
+	@apply text-secondary-light;
+}
+
+.link-animated-hover::after {
+	@apply relative rounded top-0.5 block w-full h-0.5 mx-auto my-0 bg-secondary transition-transform duration-150 ease-linear origin-center;
+	transform: scaleX(0);
+	content: '';
+}
+
+.group:hover .link-animated-hover.link-animated-hover::after,
+.group:focus .link-animated-hover.link-animated-hover::after,
+.link-animated-hover:hover.link-animated-hover::after,
+.link-animated-hover:focus.link-animated-hover::after {
+	transform: scaleX(1);
+}
+
+.link-animated-hover::after {
+	@apply hover:scale-x-100;
 }
 
 :root {
@@ -93,15 +129,6 @@ p {
 
 p {
 	line-height: 1.5;
-}
-
-a {
-	color: var(--accent-color);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
 }
 
 h1 {
