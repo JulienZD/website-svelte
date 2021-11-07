@@ -93,15 +93,34 @@ a.link.link-animated-hover {
 body {
 	min-height: 100vh;
 	margin: 0;
-	background-color: var(--primary-color);
-	background: linear-gradient(
-		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
-	);
 }
 
+textarea,
+input[type] {
+	@apply rounded bg-transparent border-secondary focus:border-current;
+}
+
+.btn {
+	@apply mx-1 py-2 px-8 rounded transition-colors duration-300;
+}
+
+.btn-sm {
+	@apply px-2 py-1 text-sm;
+}
+
+.btn-outline {
+	@apply border bg-primary text-secondary border-secondary hover:bg-secondary hover:text-primary;
+}
+
+.btn-primary {
+	@apply border bg-secondary text-primary hover:bg-primary hover:text-secondary hover:border-secondary;
+}
+
+.btn-link {
+	@apply hover:text-secondary-light;
+}
+
+/* TODO: Remove or change to look nicer */
 body::before {
 	content: '';
 	width: 80vw;
@@ -118,51 +137,4 @@ body::before {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-}
-
-h1,
-h2,
-p {
-	font-weight: 400;
-	color: var(--heading-color);
-}
-
-p {
-	line-height: 1.5;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--text-color);
-}
-
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
-}
-
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
 }

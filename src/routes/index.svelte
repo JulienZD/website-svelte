@@ -3,47 +3,18 @@
 </script>
 
 <script lang="ts">
-import Head from "$lib/head/Head.svelte";
+	import Head from '$lib/head/Head.svelte';
+	import About from '$lib/components/about/About.svelte';
+	import Contact from '$lib/components/contact/Contact.svelte';
+	import Projects from '$lib/components/projects/Projects.svelte';
+
+	let projects: Projects;
 </script>
 
 <Head />
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-	</h1>
-</section>
+<About scrollTo={projects} />
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+<Projects bind:this={projects} />
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+<Contact />

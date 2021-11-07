@@ -22,16 +22,3 @@
 		<a class="link-animated-hover" href="https://github.com/JulienZD/website">Source</a>
 	</div>
 </footer>
-
-<style>
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-</style>
