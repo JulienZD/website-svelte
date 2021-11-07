@@ -3,6 +3,13 @@
 	import '../app.css';
 </script>
 
+<svelte:head>
+	<meta property="og:url" content="https://jzd.me" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="theme-color" content="#071625" />
+</svelte:head>
+
 <Header />
 
 <main>

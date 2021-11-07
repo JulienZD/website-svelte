@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import { base } from '$app/paths';
+	import Head from "$lib/head/Head.svelte";
 
 	export let Story: any;
 	export let metadata: StoryMetadata;
@@ -36,15 +36,13 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metadata.title}</title>
-	<meta property="og:title" content={metadata.title} />
-	<meta name="description" content={metadata.description} />
-	<meta property="og:description" content={metadata.description} />
-	{#if metadata.image}
-		<meta property="og:image" content={metadata.image} />
-	{/if}
-</svelte:head>
+
+
+<Head 
+	title={metadata.title}
+	description={metadata.description}
+	image={metadata.image}>
+</Head>
 
 <h1>{metadata.title}</h1>
 

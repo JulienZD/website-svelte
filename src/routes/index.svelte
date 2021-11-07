@@ -3,14 +3,10 @@
 </script>
 
 <script lang="ts">
+import Head from "$lib/head/Head.svelte";
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta property="og:title" content="title" />
-	<meta name="description" content="hello" />
-	<meta property="og:description" content="description" />
-</svelte:head>
+<Head />
 
 <section>
 	<h1>
