@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	// see https://kit.svelte.dev/docs#loading
 	export const load: Load = async ({ page }) => {
 		try {
 			const { default: Story, metadata } = await import(`../../lib/content/stories/${page.params.slug}.md`);
@@ -18,54 +17,38 @@
 </script>
 
 <script lang="ts">
-	import Head from "$lib/head/Head.svelte";
+	import Head from '$lib/head/Head.svelte';
 
 	export let Story: any;
 	export let metadata: StoryMetadata;
 
-	interface StoryMetadata {
-		title: string;
-		description: string;
-		image: string;
-		slug: string;
-		onHomepage: boolean;
-		order?: number;
-		linkText?: string;
-		stack?: string[];
-		repository?: string;
-	}
+	$: ({ title, description, image, stack, repository } = metadata);
 </script>
 
-
-
-<Head 
-	title={metadata.title}
-	description={metadata.description}
-	image={metadata.image}>
-</Head>
+<Head {title} {description} {image} />
 
 <h1>{metadata.title}</h1>
 
 <section class="meta">
-	{#if metadata.stack?.length > 0}
+	{#if stack?.length > 0}
 		<div class="meta-item">
 			<b>Stack</b>
-			{#each metadata.stack as tech}
+			{#each stack as tech}
 				<p>{tech}</p>
 			{/each}
 		</div>
 	{/if}
 
-	{#if metadata.repository}
+	{#if repository}
 		<div class="meta-item">
 			<b>Code</b>
-			<a href={metadata.repository}>Repository</a>
+			<a href={repository}>Repository</a>
 		</div>
 	{/if}
 </section>
 
-{#if metadata.image}
-	<img src={metadata.image} alt="" loading="lazy" decoding="async" />
+{#if image}
+	<img src={image} alt="" loading="lazy" decoding="async" />
 {/if}
 
 <svelte:component this={Story} />
