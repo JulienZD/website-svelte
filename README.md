@@ -1,38 +1,33 @@
-# create-svelte
+# jzd.me - Svelte edition
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+A rewrite of [my website](https://jzd.me) using [SvelteKit](https://kit.svelte.dev/).
 
-## Creating a project
+The [original version](https://github.com/JulienZD/website) was made with [Next.js](https://nextjs.org/) (React).
 
-If you're seeing this, you've probably already done this step. Congrats!
+Ignoring images and media requests, the SvelteKit version has the following improvements over the Next.js one:
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+| Type                            |  Next.js | SvelteKit | Improvement |
+| ------------------------------- | -------: | --------: | ----------: |
+| Total requests size             | 521.24KB |  172.26KB |    348.98KB |
+| Total transferred requests size | 172.53KB |   76.85KB |     95.68KB |
+| Load                            |    3.25s |     2.36s |       0.89s |
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+Other interesting differences are that the `SvelteKit` version has _zero_ client side dependencies and has a significantly smaller `node_modules` folder size.
 
-> Note: the `@next` is temporary
+## Running locally
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies with `npm install`, start a development server:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
 ## Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+Create a production version of the site using the [static adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-static):
 
 ```bash
-npm run build
+npx svelte-kit build
 ```
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+> Preview the build with `npm run preview`
